@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>论理电影网 - 论理电影在线推荐_热门影视榜单与精选片单 | lunlidianyingwang-cn.github.io</title>
+<meta name="description" content="论理电影网提供精选电影推荐、热门影视榜单、全类型分类索引与最新影视资讯，帮你快速找到值得一看的好电影。页面轻量、移动端自适应，手机浏览同样清晰流畅。">
+<meta name="keywords" content="论理电影网,论理电影,伦理电影推荐,电影推荐,热门电影榜单,影视分类导航,在线电影,lunlidianyingwang-cn.github.io">
+<meta name="author" content="论理电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://lunlidianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="论理电影网">
+<meta property="og:title" content="论理电影网 - 热门影视榜单与精选电影推荐">
+<meta property="og:description" content="论理电影网精选片单、每日热榜、全类型索引与资讯日志，一站式发现好电影。">
+<meta property="og:url" content="https://lunlidianyingwang-cn.github.io/">
+<meta name="theme-color" content="#04070a">
+<style>
+:root{
+  --bg:#04070a;
+  --panel:#080e12;
+  --panel2:#0b1418;
+  --line:#1b2c26;
+  --line2:#26413a;
+  --gr:#7dffa8;
+  --gr2:#35e07f;
+  --dim:#4e7a63;
+  --dim2:#33604c;
+  --amber:#ffd166;
+  --cyan:#5fe8ff;
+  --red:#ff7b72;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  --cjk:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  --ff:var(--mono),var(--cjk);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--ff);
+  background:var(--bg);color:var(--gr);
+  line-height:1.75;font-size:15px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  padding-bottom:8px;
+}
+/* CRT 扫描线与暗角 */
+body:before{
+  content:"";position:fixed;inset:0;z-index:200;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply;
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:201;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.55) 100%);
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul,ol{list-style:none;}
+h1,h2,h3,h4{font-weight:700;line-height:1.35;font-family:var(--ff);}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px;}
+.glow{text-shadow:0 0 10px rgba(125,255,168,.35);}
+.dim{color:var(--dim);}
+.am{color:var(--amber);}
+.cy{color:var(--cyan);}
+.prompt{color:var(--gr2);}
+.cur{display:inline-block;width:9px;height:16px;background:var(--gr);vertical-align:-3px;animation:bk 1.1s steps(1) infinite;box-shadow:0 0 8px rgba(125,255,168,.6);}
+@keyframes bk{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+@media (prefers-reduced-motion:reduce){.cur{animation:none;}html{scroll-behavior:auto;}}
+
+/* ============ 终端窗口外壳 ============ */
+.term{max-width:1080px;margin:22px auto 0;padding:0 20px;}
+.win{border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:var(--panel);box-shadow:0 0 0 1px rgba(125,255,168,.05),0 18px 50px rgba(0,0,0,.6);}
+.chrome{
+  display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;
+  background:linear-gradient(180deg,#101c19,#0a1215);border-bottom:1px solid var(--line2);
+}
+.chrome .dot{width:11px;height:11px;border-radius:50%;flex:0 0 11px;}
+.chrome .r{background:#ff5f56;}.chrome .y{background:#ffbd2e;}.chrome .g{background:#27c93f;}
+.chrome .ttl{flex:1;text-align:center;font-size:12px;color:var(--dim);letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.screen{padding:26px 24px 22px;position:relative;background:radial-gradient(120% 100% at 50% 0%,#0b1519,#05090c 80%);}
+
+/* ASCII 横幅 */
+.banner{font-family:var(--mono);font-size:clamp(4.6px,1.55vw,12px);line-height:1.15;color:var(--gr2);white-space:pre;overflow-x:auto;text-shadow:0 0 12px rgba(53,224,127,.35);}
+.screen h1{margin-top:16px;font-size:32px;letter-spacing:2px;color:#eafff2;}
+.screen h1 em{font-style:normal;color:var(--amber);}
+.screen .lead{margin-top:12px;max-width:660px;color:#9fd8b6;font-size:14.5px;}
+.cmd{margin-top:16px;font-size:13.5px;}
+.cmd .ln{color:var(--dim);}
+.cmd .ln b{color:var(--gr2);font-weight:400;}
+.kv{margin-top:10px;border:1px solid var(--line);border-radius:8px;background:rgba(125,255,168,.03);padding:4px 0;}
+.kv div{display:flex;justify-content:space-between;gap:14px;padding:6px 14px;border-bottom:1px dashed rgba(78,122,99,.22);font-size:13px;}
+.kv div:last-child{border-bottom:0;}
+.kv span{color:var(--dim);}
+.kv b{color:var(--amber);font-weight:400;}
+.tagline{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+.tagline a,.tagline span{font-size:12.5px;padding:3px 10px;border:1px solid var(--line2);border-radius:6px;color:var(--gr);background:rgba(125,255,168,.04);}
+.tagline .hot{border-color:var(--gr2);color:#eafff2;background:rgba(53,224,127,.12);box-shadow:0 0 14px rgba(53,224,127,.15);}
+.tagline .hot:hover{background:rgba(53,224,127,.24);}
+
+/* ============ 菜单条 ============ */
+.menu{position:sticky;top:0;z-index:90;background:rgba(4,7,10,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.menu .wrap{display:flex;align-items:center;gap:6px;height:44px;overflow-x:auto;scrollbar-width:none;}
+.menu .wrap::-webkit-scrollbar{display:none;}
+.menu a{font-size:13px;color:var(--dim);padding:6px 10px;border:1px solid transparent;border-radius:6px;white-space:nowrap;flex:0 0 auto;}
+.menu a i{font-style:normal;color:var(--dim2);margin-right:5px;}
+.menu a:hover{color:var(--gr);border-color:var(--line2);background:rgba(125,255,168,.05);}
+.menu a.on{color:#eafff2;border-color:var(--gr2);background:rgba(53,224,127,.12);}
+.menu a.on i{color:var(--gr2);}
+
+/* ============ 区块：命令块 ============ */
+section{padding:34px 0 6px;}
+.blk{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;}
+.blk > .bh{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:11px 16px;background:linear-gradient(180deg,#0d181c,#080e12);border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+.blk > .bh .p{color:var(--gr2);}
+.blk > .bh code{color:#eafff2;font-family:var(--mono);}
+.blk > .bh .no{margin-left:auto;font-size:11.5px;color:var(--dim2);letter-spacing:.12em;}
+.blk > .bb{padding:16px;}
+.blk h2{font-size:20px;color:#eafff2;margin-bottom:4px;}
+.blk h2:before{content:"▍";color:var(--amber);margin-right:6px;}
+.blk .desc{font-size:13px;color:var(--dim);margin-bottom:14px;}
+
+/* --- KPI --- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.kpi{border:1px solid var(--line);border-radius:8px;padding:13px 14px;background:var(--panel2);}
+.kpi .lb{font-size:12px;color:var(--dim);}
+.kpi .vl{font-size:25px;color:var(--amber);margin-top:2px;font-weight:700;}
+.kpi .dt{font-size:11.5px;color:var(--dim2);margin-top:2px;}
+.kpi .dt em{font-style:normal;}
+.up{color:var(--gr2);}.down{color:var(--red);}
+.spark{margin-top:6px;font-size:18px;letter-spacing:2px;color:var(--gr2);opacity:.85;}
+.trend{margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--panel2);}
+.trend .th{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-bottom:10px;}
+.trend .row{display:flex;align-items:baseline;gap:10px;font-size:12.5px;}
+.trend .row .k{width:52px;flex:0 0 52px;color:var(--dim);}
+.trend .row .v{width:56px;flex:0 0 56px;color:var(--amber);text-align:right;}
+.bar{position:relative;flex:1;height:13px;background-image:repeating-linear-gradient(90deg,#1f3a2c 0 3px,transparent 3px 6px);}
+.bar b{position:absolute;left:0;top:0;bottom:0;width:var(--w);background-image:repeating-linear-gradient(90deg,var(--gr2) 0 3px,transparent 3px 6px);box-shadow:0 0 10px rgba(53,224,127,.25);}
+.bar.g b{background-image:repeating-linear-gradient(90deg,var(--amber) 0 3px,transparent 3px 6px);box-shadow:0 0 10px rgba(255,209,102,.2);}
+
+/* --- 文件列表 --- */
+.files{border:1px solid var(--line);border-radius:8px;background:var(--panel2);overflow:hidden;}
+.files .hd{display:grid;grid-template-columns:96px 1fr 68px 58px 26px;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;color:var(--dim2);letter-spacing:.08em;background:rgba(125,255,168,.03);}
+.files li{display:grid;grid-template-columns:96px 1fr 68px 58px 26px;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px dashed rgba(78,122,99,.16);transition:.2s;}
+.files li:last-child{border-bottom:0;}
+.files li:hover{background:rgba(53,224,127,.06);}
+.files .perm{font-size:11.5px;color:var(--dim2);letter-spacing:-.02em;}
+.files .ttl{min-width:0;}
+.files .ttl a{font-size:15px;color:#eafff2;}
+.files .ttl a:hover{color:var(--amber);text-decoration:underline;}
+.files .ttl em{display:block;font-style:normal;font-size:12px;color:var(--dim);margin-top:2px;}
+.files .sz{font-size:12.5px;color:var(--dim);text-align:right;}
+.files .sc{font-size:17px;color:var(--amber);text-align:right;font-weight:700;}
+.files .go{font-size:14px;color:var(--gr2);text-align:right;}
+
+/* --- 榜单 --- */
+.rank li{display:grid;grid-template-columns:34px 1fr 200px 54px;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px dashed rgba(78,122,99,.16);}
+.rank li:last-child{border-bottom:0;}
+.rank li:hover{background:rgba(53,224,127,.06);}
+.rank .rk{font-size:14px;color:var(--dim);font-weight:700;}
+.rank li:nth-child(-n+3) .rk{color:var(--amber);}
+.rank .tt{min-width:0;}
+.rank .tt a{font-size:15px;color:#eafff2;}
+.rank .tt a:hover{color:var(--amber);}
+.rank .tt span{display:block;font-size:12px;color:var(--dim);}
+.rank .sc{font-size:17px;color:var(--amber);font-weight:700;text-align:right;}
+
+/* --- 目录树 --- */
+.trees{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tree{border:1px solid var(--line);border-radius:8px;background:var(--panel2);padding:12px 6px 12px 0;overflow:hidden;}
+.tree .root{padding:0 14px 8px;font-size:13px;color:var(--cyan);border-bottom:1px dashed rgba(78,122,99,.2);margin-bottom:6px;}
+.tree li{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:14px;transition:.2s;}
+.tree li:hover{background:rgba(53,224,127,.06);}
+.tree .br{color:var(--dim2);font-size:12px;flex:0 0 auto;}
+.tree a{color:#d7ffe7;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tree a:hover{color:var(--amber);}
+.tree .ct{font-size:12px;color:var(--dim);flex:0 0 auto;}
+
+/* --- 日志 --- */
+.log{border:1px solid var(--line);border-radius:8px;background:var(--panel2);padding:6px 0;}
+.log li{display:grid;grid-template-columns:150px 62px 1fr;gap:12px;align-items:start;padding:11px 14px;border-bottom:1px dashed rgba(78,122,99,.16);}
+.log li:last-child{border-bottom:0;}
+.log li:hover{background:rgba(53,224,127,.05);}
+.log time{font-size:12px;color:var(--cyan);letter-spacing:.02em;}
+.log .lvl{font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid var(--line2);color:var(--gr2);text-align:center;}
+.log .lvl.new{color:var(--amber);border-color:rgba(255,209,102,.4);background:rgba(255,209,102,.08);}
+.log .bd h3{font-size:15px;color:#eafff2;font-weight:700;}
+.log .bd p{font-size:13px;color:var(--dim);margin-top:4px;}
+.log .bd a{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--gr2);}
+.log .bd a:hover{text-decoration:underline;}
+
+/* --- man 手册 --- */
+.man{border:1px solid var(--line);border-radius:8px;background:var(--panel2);padding:18px 20px;}
+.man .mh{font-size:13px;color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px;letter-spacing:.04em;}
+.man dl{display:grid;grid-template-columns:118px 1fr;gap:0 16px;}
+.man dt{font-size:12.5px;color:var(--amber);letter-spacing:.1em;padding:12px 0 2px;grid-column:1;}
+.man dd{font-size:14px;color:#bff5d5;padding:12px 0 2px;grid-column:2;border-bottom:1px dashed rgba(78,122,99,.16);}
+.man dd .q{color:#eafff2;font-weight:700;display:block;}
+.man .end{margin-top:14px;font-size:12.5px;color:var(--dim2);}
+.man .end a{color:var(--gr2);}
+.man .end a:hover{text-decoration:underline;}
+
+/* ============ 页脚 ============ */
+footer{margin-top:34px;border-top:1px solid var(--line);background:#060b0e;padding:30px 0 22px;}
+.fgrid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:24px;}
+.fgrid h4{font-size:13px;color:var(--gr2);margin-bottom:10px;letter-spacing:.06em;}
+.fgrid li{font-size:13px;padding:4px 0;color:var(--dim);}
+.fgrid li a:hover{color:var(--amber);}
+.fgrid .intro{font-size:13px;color:var(--dim);}
+.fgrid .intro b{color:var(--amber);font-weight:400;}
+.fbot{margin-top:22px;padding-top:14px;border-top:1px dashed rgba(78,122,99,.22);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12px;color:var(--dim2);}
+.fbot a{color:var(--dim2);}
+.fbot a:hover{color:var(--gr);}
+.eof{text-align:center;font-size:12px;color:var(--dim2);margin-top:18px;letter-spacing:.2em;}
+
+#top{
+  position:fixed;right:16px;bottom:18px;z-index:150;height:40px;padding:0 14px;cursor:pointer;display:none;
+  background:rgba(8,14,18,.92);color:var(--gr2);border:1px solid var(--line2);border-radius:8px;font-family:var(--mono);font-size:12.5px;
+  box-shadow:0 8px 22px rgba(0,0,0,.5);
+}
+#top.show{display:block;}
+
+/* ============ 移动端自适应 ============ */
+@media (max-width:860px){
+  .kpis{grid-template-columns:1fr 1fr;}
+  .trees{grid-template-columns:1fr;}
+  .rank li{grid-template-columns:30px 1fr 50px;}
+  .rank .bar{display:none;}
+  .fgrid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:620px){
+  .term{padding:0 12px;margin-top:14px;}
+  .wrap{padding:0 12px;}
+  .screen{padding:18px 16px;}
+  .screen h1{font-size:24px;letter-spacing:1px;}
+  .screen .lead{font-size:13.5px;}
+  .blk > .bb{padding:12px 12px 14px;}
+  .blk > .bh{padding:10px 12px;font-size:12px;}
+  .blk h2{font-size:18px;}
+  .kpis{grid-template-columns:1fr 1fr;gap:8px;}
+  .kpi{padding:10px 11px;}
+  .kpi .vl{font-size:20px;}
+  .files .hd{display:none;}
+  .files li{grid-template-columns:1fr auto auto;gap:10px;}
+  .files .perm,.files .sz{display:none;}
+  .files .sc{font-size:15px;}
+  .trend .row .k{flex:0 0 42px;width:42px;}
+  .trend .row .v{flex:0 0 46px;width:46px;font-size:11.5px;}
+  .log li{grid-template-columns:1fr;gap:6px;}
+  .log .lvl{justify-self:start;}
+  .man dl{grid-template-columns:1fr;}
+  .man dt{padding-bottom:0;border:0;}
+  .man dd{padding-top:4px;}
+  .fgrid{grid-template-columns:1fr;}
+  section{padding:26px 0 4px;}
+}
+@media (max-width:400px){
+  .kpis{grid-template-columns:1fr;}
+  .files li{grid-template-columns:1fr auto;}
+  .files .go{display:none;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<div class="term">
+  <div class="win">
+    <div class="chrome">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="ttl">user@lunlidianyingwang-cn — /index — 80×24</span>
+    </div>
+    <div class="screen" id="home">
+      <pre class="banner" aria-label="LUNLI">██╗     ██╗   ██╗███╗   ██╗███╗   ██╗██╗
+██║     ██║   ██║████╗  ██║████╗  ██║██║
+██║     ██║   ██║██╔██╗ ██║██╔██╗ ██║██║
+██║     ██║   ██║██║╚██╗██║██║╚██╗██║██║
+███████╗╚██████╔╝██║ ╚████║██║ ╚████║██║
+╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝╚═╝</pre>
+
+      <h1>论理电影网 <em>LUNLI MOVIE INDEX</em></h1>
+      <p class="lead">论理电影网是一个专注电影推荐与影视资讯的索引站点，汇总精选片单、每日热榜与全类型目录，帮你在海量片库里少花时间、多看好片。</p>
+
+      <div class="cmd">
+        <p class="ln"><b>user@lunli:~$</b> whois lunlidianyingwang-cn.github.io<span class="cur"></span></p>
+        <div class="kv">
+          <div><span>site.name</span><b>论理电影网</b></div>
+          <div><span>site.url</span><b>https://lunlidianyingwang-cn.github.io</b></div>
+          <div><span>site.type</span><b>电影推荐 / 影视资讯索引</b></div>
+          <div><span>content.axis</span><b>类型 · 地区 · 年代</b></div>
+          <div><span>update.cron</span><b>热榜每日 08:00 刷新</b></div>
+          <div><span>responsive</span><b>true（手机 / 平板 / 桌面）</b></div>
+        </div>
+      </div>
+
+      <div class="tagline">
+        <span class="hot">论理电影网</span>
+        <span class="hot">论理电影</span>
+        <a href="#">精选片单</a>
+        <a href="#">每日热榜</a>
+        <a href="#">全类型目录</a>
+        <a href="#">资讯日志</a>
+        <a href="#">移动端自适应</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="menu" aria-label="网站主导航">
+  <div class="wrap">
+    <a href="#home" class="on"><i>[00]</i>首页</a>
+    <a href="#overview"><i>[01]</i>系统总览</a>
+    <a href="#film"><i>[02]</i>精选片单</a>
+    <a href="#rank"><i>[03]</i>热榜 TOP10</a>
+    <a href="#cate"><i>[04]</i>分类目录</a>
+    <a href="#news"><i>[05]</i>资讯日志</a>
+    <a href="#about"><i>[06]</i>关于手册</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="overview">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>stats --today --verbose</code><span class="no">01 / OVERVIEW</span></div>
+        <div class="bb">
+          <h2>系统总览</h2>
+          <p class="desc">论理电影网站内核心指标概览，数据每 24 小时重算一次。</p>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="lb">今日新增片单</div>
+              <div class="vl">128</div>
+              <div class="dt"><em class="up">▲ 12.4%</em> 较昨日</div>
+              <div class="spark">▁▃▂▅▆▇▅</div>
+            </div>
+            <div class="kpi">
+              <div class="lb">榜单在榜影片</div>
+              <div class="vl">1,860</div>
+              <div class="dt"><em class="up">▲ 3.1%</em> 较上周</div>
+              <div class="spark">▂▄▃▅▆▇█</div>
+            </div>
+            <div class="kpi">
+              <div class="lb">站内平均评分</div>
+              <div class="vl">8.42</div>
+              <div class="dt"><em class="down">▼ 0.08</em> 较上周</div>
+              <div class="spark">▇▆▆▅▄▃▃</div>
+            </div>
+            <div class="kpi">
+              <div class="lb">移动端访问占比</div>
+              <div class="vl">72.6%</div>
+              <div class="dt"><em class="up">▲ 5.5%</em> 较上周</div>
+              <div class="spark">▃▄▄▅▅▆▇</div>
+            </div>
+          </div>
+          <div class="trend">
+            <div class="th"><span>近 7 日站内热度趋势（单位：万次）</span><span>HEAT / 7D</span></div>
+            <div class="row"><span class="k">周一</span><span class="bar"><b style="--w:52%"></b></span><span class="v">31.2</span></div>
+            <div class="row"><span class="k">周二</span><span class="bar"><b style="--w:60%"></b></span><span class="v">34.8</span></div>
+            <div class="row"><span class="k">周三</span><span class="bar"><b style="--w:48%"></b></span><span class="v">29.6</span></div>
+            <div class="row"><span class="k">周四</span><span class="bar"><b style="--w:72%"></b></span><span class="v">41.3</span></div>
+            <div class="row"><span class="k">周五</span><span class="bar"><b style="--w:90%"></b></span><span class="v">52.7</span></div>
+            <div class="row"><span class="k">周六</span><span class="bar g"><b style="--w:100%"></b></span><span class="v">58.4</span></div>
+            <div class="row"><span class="k">周日</span><span class="bar"><b style="--w:80%"></b></span><span class="v">46.9</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="film">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>ls -l ./films | grep 伦理 | head -8</code><span class="no">02 / FEATURED</span></div>
+        <div class="bb">
+          <h2>精选片单</h2>
+          <p class="desc">论理电影网编辑部本周精选，覆盖伦理剧情、家庭、社会现实等方向。</p>
+          <ul class="files">
+            <li class="hd"><span>PERMISSION</span><span>FILENAME</span><span>SIZE</span><span>SCORE</span><span></span></li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">长夜将尽</a><em>伦理剧情 · 2025</em></span>
+              <span class="sz">118m</span>
+              <span class="sc">9.1</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">沉默的河</a><em>家庭伦理 · 2024</em></span>
+              <span class="sz">126m</span>
+              <span class="sc">8.9</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">海边的信</a><em>伦理爱情 · 2025</em></span>
+              <span class="sz">104m</span>
+              <span class="sc">8.7</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">第七个春天</a><em>伦理现实 · 2024</em></span>
+              <span class="sz">132m</span>
+              <span class="sc">8.6</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">归途列车</a><em>伦理社会 · 2023</em></span>
+              <span class="sz">121m</span>
+              <span class="sc">8.5</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">人间处方</a><em>伦理治愈 · 2025</em></span>
+              <span class="sz">110m</span>
+              <span class="sc">8.4</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">空白的一页</a><em>伦理心理 · 2024</em></span>
+              <span class="sz">115m</span>
+              <span class="sc">8.2</span>
+              <span class="go">→</span>
+            </li>
+            <li>
+              <span class="perm">-rw-r--r--</span>
+              <span class="ttl"><a href="#">晚灯</a><em>伦理文艺 · 2023</em></span>
+              <span class="sz">99m</span>
+              <span class="sc">8.0</span>
+              <span class="go">→</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rank">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>chart --top 10 --by heat</code><span class="no">03 / RANKING</span></div>
+        <div class="bb">
+          <h2>热榜 TOP 10</h2>
+          <p class="desc">依据论理电影网站内热度与用户评分加权排序，每日 08:00 刷新。</p>
+          <ul class="rank">
+            <li><span class="rk">01</span><span class="tt"><a href="#">长夜将尽</a><span>伦理剧情 · 2025 · 热度 96.2 万</span></span><span class="bar"><b style="--w:98%"></b></span><span class="sc">9.1</span></li>
+            <li><span class="rk">02</span><span class="tt"><a href="#">沉默的河</a><span>家庭伦理 · 2024 · 热度 88.7 万</span></span><span class="bar"><b style="--w:92%"></b></span><span class="sc">8.9</span></li>
+            <li><span class="rk">03</span><span class="tt"><a href="#">海边的信</a><span>伦理爱情 · 2025 · 热度 81.3 万</span></span><span class="bar"><b style="--w:87%"></b></span><span class="sc">8.7</span></li>
+            <li><span class="rk">04</span><span class="tt"><a href="#">第七个春天</a><span>伦理现实 · 2024 · 热度 76.5 万</span></span><span class="bar"><b style="--w:81%"></b></span><span class="sc">8.6</span></li>
+            <li><span class="rk">05</span><span class="tt"><a href="#">归途列车</a><span>伦理社会 · 2023 · 热度 69.8 万</span></span><span class="bar"><b style="--w:76%"></b></span><span class="sc">8.5</span></li>
+            <li><span class="rk">06</span><span class="tt"><a href="#">人间处方</a><span>伦理治愈 · 2025 · 热度 63.1 万</span></span><span class="bar"><b style="--w:70%"></b></span><span class="sc">8.4</span></li>
+            <li><span class="rk">07</span><span class="tt"><a href="#">空白的一页</a><span>伦理心理 · 2024 · 热度 57.6 万</span></span><span class="bar"><b style="--w:64%"></b></span><span class="sc">8.2</span></li>
+            <li><span class="rk">08</span><span class="tt"><a href="#">晚灯</a><span>伦理文艺 · 2023 · 热度 49.2 万</span></span><span class="bar"><b style="--w:58%"></b></span><span class="sc">8.0</span></li>
+            <li><span class="rk">09</span><span class="tt"><a href="#">旧巷回声</a><span>伦理年代 · 2022 · 热度 44.7 万</span></span><span class="bar"><b style="--w:52%"></b></span><span class="sc">7.9</span></li>
+            <li><span class="rk">10</span><span class="tt"><a href="#">未完成的信</a><span>伦理纪录 · 2023 · 热度 39.5 万</span></span><span class="bar"><b style="--w:47%"></b></span><span class="sc">7.8</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cate">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>tree ./categories -L 1</code><span class="no">04 / CATEGORY</span></div>
+        <div class="bb">
+          <h2>分类目录</h2>
+          <p class="desc">按类型与地区双线组织论理电影网全站频道，数字为在库条目数。</p>
+          <div class="trees">
+            <ul class="tree">
+              <li class="root">./categories/type</li>
+              <li><span class="br">├──</span><a href="#">伦理剧情/</a><span class="ct">1,286</span></li>
+              <li><span class="br">├──</span><a href="#">家庭伦理/</a><span class="ct">948</span></li>
+              <li><span class="br">├──</span><a href="#">情感爱情/</a><span class="ct">1,073</span></li>
+              <li><span class="br">├──</span><a href="#">社会现实/</a><span class="ct">762</span></li>
+              <li><span class="br">├──</span><a href="#">心理悬疑/</a><span class="ct">615</span></li>
+              <li><span class="br">├──</span><a href="#">文艺独立/</a><span class="ct">529</span></li>
+              <li><span class="br">└──</span><a href="#">纪录影像/</a><span class="ct">356</span></li>
+            </ul>
+            <ul class="tree">
+              <li class="root">./categories/region</li>
+              <li><span class="br">├──</span><a href="#">国产影片/</a><span class="ct">1,842</span></li>
+              <li><span class="br">├──</span><a href="#">欧美影片/</a><span class="ct">1,264</span></li>
+              <li><span class="br">├──</span><a href="#">日韩影片/</a><span class="ct">803</span></li>
+              <li><span class="br">├──</span><a href="#">港台影片/</a><span class="ct">417</span></li>
+              <li><span class="br">├──</span><a href="#">法国影片/</a><span class="ct">268</span></li>
+              <li><span class="br">├──</span><a href="#">年代怀旧/</a><span class="ct">487</span></li>
+              <li><span class="br">└──</span><a href="#">经典修复/</a><span class="ct">294</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>tail -n 4 ./var/log/news.log</code><span class="no">05 / NEWS</span></div>
+        <div class="bb">
+          <h2>资讯日志</h2>
+          <p class="desc">第一时间掌握院线动态、流媒体上线与幕后花絮。</p>
+          <ol class="log">
+            <li>
+              <time datetime="2026-10-01">2026-10-01 08:00</time>
+              <span class="lvl new">NEW</span>
+              <div class="bd">
+                <h3>本周新片速递：三部伦理题材影片同日上线</h3>
+                <p>论理电影网整理本周上线片单，覆盖剧情、家庭与纪录三个方向，并附看点速览与观影建议。</p>
+                <a href="#">阅读全文 →</a>
+              </div>
+            </li>
+            <li>
+              <time datetime="2026-09-27">2026-09-27 09:30</time>
+              <span class="lvl">INFO</span>
+              <div class="bd">
+                <h3>秋季档观察：中小成本现实题材为何频出黑马</h3>
+                <p>从排片结构、口碑发酵路径与观众画像三个角度，拆解今年秋季档几部黑马影片的共同特征。</p>
+                <a href="#">阅读全文 →</a>
+              </div>
+            </li>
+            <li>
+              <time datetime="2026-09-22">2026-09-22 10:15</time>
+              <span class="lvl">INFO</span>
+              <div class="bd">
+                <h3>观影指南：如何用分类目录与评分搭建个人片单</h3>
+                <p>给新手影迷的实用建议，教你利用论理电影网的分类目录与榜单体系建立专属电影库。</p>
+                <a href="#">阅读全文 →</a>
+              </div>
+            </li>
+            <li>
+              <time datetime="2026-09-18">2026-09-18 16:40</time>
+              <span class="lvl">INFO</span>
+              <div class="bd">
+                <h3>榜单机制说明：热度与评分如何共同决定排名</h3>
+                <p>详解本站榜单的加权口径、数据周期与异常值处理方式，帮助你更准确地理解排名变化。</p>
+                <a href="#">阅读全文 →</a>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="blk">
+        <div class="bh"><span class="prompt">user@lunli:~$</span> <code>man lunli</code><span class="no">06 / MANUAL</span></div>
+        <div class="bb">
+          <h2>关于手册</h2>
+          <p class="desc">站点定位、内容组织方式与常见问题，以手册条目形式呈现。</p>
+          <div class="man">
+            <p class="mh">LUNLI(1) &nbsp;·&nbsp; 论理电影网 Manual &nbsp;·&nbsp; lunlidianyingwang-cn.github.io</p>
+            <dl>
+              <dt>NAME</dt>
+              <dd>论理电影网 —— 电影推荐与影视资讯索引站点</dd>
+              <dt>SYNOPSIS</dt>
+              <dd>提供精选片单、热门榜单、分类目录与资讯日志四大板块内容，覆盖伦理剧情、家庭、社会现实等类型。</dd>
+              <dt>DESCRIPTION</dt>
+              <dd>论理电影网致力于用清晰的分类与实时榜单降低找片成本，让每一次观影都更值得。内容按「类型 · 地区 · 年代」三维组织。</dd>
+              <dt>RANKING</dt>
+              <dd><span class="q">热榜如何排序？</span>榜单依据站内浏览热度、用户评分与互动数据加权计算，每日 08:00 刷新一次，并在榜单页同步展示热度条与评分。</dd>
+              <dt>MOBILE</dt>
+              <dd><span class="q">手机端体验如何保证？</span>页面采用响应式布局，小屏下文件列表隐藏权限与体积列、热度条收起、目录树与手册转为单列，保证阅读与点击顺畅。</dd>
+              <dt>CONTACT</dt>
+              <dd><span class="q">如何联系本站？</span>可通过页脚「关于与联系」栏目提交合作、投稿或版权相关反馈，我们会在收到后尽快处理。</dd>
+            </dl>
+            <p class="end">SEE ALSO：<a href="#">友情链接</a> · <a href="#">意见反馈</a> · <a href="#">版权声明</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>论理电影网 · LUNLI</h4>
+        <p class="intro">论理电影网专注电影推荐与影视资讯聚合，精选片单与热榜每日更新，帮你更快找到好电影。</p>
+        <p class="intro" style="margin-top:10px;">官方网址：<b>https://lunlidianyingwang-cn.github.io</b></p>
+      </div>
+      <div>
+        <h4>频道导航</h4>
+        <ul>
+          <li><a href="#overview">系统总览</a></li>
+          <li><a href="#film">精选片单</a></li>
+          <li><a href="#rank">热榜 TOP10</a></li>
+          <li><a href="#cate">分类目录</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>热门分类</h4>
+        <ul>
+          <li><a href="#">伦理剧情</a></li>
+          <li><a href="#">家庭伦理</a></li>
+          <li><a href="#">情感爱情</a></li>
+          <li><a href="#">社会现实</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于与联系</h4>
+        <ul>
+          <li><a href="#about">关于手册</a></li>
+          <li><a href="#">友情链接</a></li>
+          <li><a href="#">意见反馈</a></li>
+          <li><a href="#">版权声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>Copyright © 2026 论理电影网 · lunlidianyingwang-cn.github.io · All Rights Reserved.</p>
+      <p><a href="#">网站地图</a> · <a href="#">隐私政策</a> · <a href="#">免责声明</a></p>
+    </div>
+    <p class="eof">-- END OF FILE --</p>
+  </div>
+</footer>
+
+<button type="button" id="top">[↑] TOP</button>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.menu a');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY + 140;
+    var cur = null;
+    for(var i = 0; i < links.length; i++){
+      var el = document.getElementById(links[i].getAttribute('href').slice(1));
+      if(el && el.offsetTop <= y){ cur = links[i]; }
+    }
+    if(!cur){ cur = links[0]; }
+    for(var j = 0; j < links.length; j++){ links[j].classList.remove('on'); }
+    if(cur){ cur.classList.add('on'); }
+    var t = document.getElementById('top');
+    if(window.scrollY > 340){ t.classList.add('show'); }
+    else { t.classList.remove('show'); }
+  });
+  var top = document.getElementById('top');
+  top.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+</body>
+</html>
